@@ -296,3 +296,23 @@ function getRandomQuote() {
 }
 
 t14Next.addEventListener("click", getRandomQuote);
+
+
+const t15Item = document.querySelector("[data-js='t15-item']");
+const t15Coords = document.querySelector("[data-js='t15-coords']");
+let isDragging = false;
+
+t15Item.addEventListener("mousedown", function() {
+  isDragging = true;
+});
+
+document.addEventListener("mousemove", function(event) {
+  if (!isDragging) return;
+  t15Item.style.left = event.clientX - 75 + "px";
+  t15Item.style.top = event.clientY - 185 + "px";
+  t15Coords.textContent = "x: " + event.clientX + "px, y: " + event.clientY + "px";
+});
+
+document.addEventListener("mouseup", function() {
+  isDragging = false;
+});
